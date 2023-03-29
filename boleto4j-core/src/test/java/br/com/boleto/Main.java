@@ -1,4 +1,4 @@
-package br;
+package br.com.boleto;
 
 import br.com.boleto.*;
 import br.com.boleto.bancos.BancoDoBrasil;
