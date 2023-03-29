@@ -9,13 +9,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.imageio.ImageIO;
 
@@ -208,6 +203,14 @@ public class GeradorDeBoleto {
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		geraPDF(stream);
 		return stream.toByteArray();	
+	}
+
+	/**
+	 * Gera o boleto no formato PDF.
+	 * @return base64 representando o PDF desse boleto ja gerado.
+	 */
+	public String geraBase64PDF() {
+		return Base64.getEncoder().encodeToString(geraPDF());
 	}
 
 	/**

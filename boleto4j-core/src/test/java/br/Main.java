@@ -60,9 +60,6 @@ public class Main {
 
         GeradorDeBoleto gerador = new GeradorDeBoleto(boleto);
 
-        // Para gerar um boleto em PDF
-        gerador.geraPDF("itau.pdf");
-
         // Para gerar um array de bytes a partir de um PDF
         byte[] bPDF = gerador.geraPDF();
     }
