@@ -5,8 +5,8 @@ import br.com.caelum.stella.boleto.Boleto;
 import br.com.caelum.stella.boleto.Datas;
 import br.com.caelum.stella.boleto.Emissor;
 import br.com.caelum.stella.boleto.Sacado;
-import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
-import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
+import br.com.boleto.bancos.BancoDoBrasil;
+import br.com.boleto.transformer.GeradorDeBoleto;
 
 public class BoletoBancoDoBrasilExample {
     public static void main(String[] args) {
