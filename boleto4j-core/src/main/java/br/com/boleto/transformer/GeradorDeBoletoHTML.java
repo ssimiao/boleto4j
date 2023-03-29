@@ -14,7 +14,9 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.HtmlExporter;
 import net.sf.jasperreports.engine.export.JRHtmlExporterParameter;
+import net.sf.jasperreports.export.SimpleHtmlExporterConfiguration;
 import net.sf.jasperreports.export.SimpleHtmlExporterOutput;
+import net.sf.jasperreports.export.SimpleHtmlReportConfiguration;
 import net.sf.jasperreports.j2ee.servlets.ImageServlet;
 import br.com.boleto.Boleto;
 import br.com.boleto.exception.GeracaoBoletoException;
@@ -25,18 +27,17 @@ import br.com.boleto.exception.GeracaoBoletoException;
  * @author Mario Amaral <a href="github.com/mariofts">Github</a>
  * 
  */
-@SuppressWarnings("deprecation")
+//@SuppressWarnings("deprecation")
 public class GeradorDeBoletoHTML extends GeradorDeBoleto {
 	final ByteArrayOutputStream out = new ByteArrayOutputStream();
 	private HtmlExporter exporter = new HtmlExporter();
 
 	{
-		exporter.setParameter(JRHtmlExporterParameter.CHARACTER_ENCODING, "ISO-8859-1");
+		var htmlConfig = new SimpleHtmlReportConfiguration();
+		htmlConfig.setZoomRatio(1.3F);
+		htmlConfig.setUseBackgroundImageToAlign(Boolean.FALSE);
 		exporter.setExporterOutput(new SimpleHtmlExporterOutput(out));
-		//exporter.setParameter(JRHtmlExporterParameter.IS_USING_IMAGES_TO_ALIGN, Boolean.FALSE);
-		exporter.setParameter(JRHtmlExporterParameter.ZOOM_RATIO, 1.3F);
-		exporter.setParameter(JRHtmlExporterParameter.IMAGES_URI, "stella-boleto?image=");
-		exporter.setParameter(JRHtmlExporterParameter.CHARACTER_ENCODING, "ISO-8859-1");
+		exporter.setConfiguration(htmlConfig);
 	}
 	
 	/**

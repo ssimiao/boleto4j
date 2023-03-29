@@ -1,6 +1,11 @@
 package br.com.boleto.transformer.transformer;
 
-import static org.junit.Assert.assertTrue;
+import br.com.boleto.*;
+import br.com.boleto.bancos.BancoDoBrasil;
+import br.com.boleto.transformer.GeradorDeBoletoHTML;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,18 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Locale;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import br.com.boleto.Banco;
-import br.com.boleto.Beneficiario;
-import br.com.boleto.Boleto;
-import br.com.boleto.Datas;
-import br.com.boleto.Endereco;
-import br.com.boleto.Pagador;
-import br.com.boleto.bancos.BancoDoBrasil;
-import br.com.boleto.transformer.GeradorDeBoletoHTML;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test para testar o boleto html, deixei em um teste separado pois ainda não
@@ -33,7 +27,7 @@ public class BoletoHTMLTransformerIntegrationTest{
 	private static final String FILE_NAME = "arquivo.html";
 	
 	
-	@After
+	@AfterEach
 	public void removeFiles(){
 		delete(new File(FILE_NAME));
 		delete(new File(FILE_NAME + "_files"));
@@ -53,7 +47,7 @@ public class BoletoHTMLTransformerIntegrationTest{
 		return file.delete();
 	}
 	
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 
 		Locale.setDefault(new Locale("pt", "br"));
@@ -113,10 +107,8 @@ public class BoletoHTMLTransformerIntegrationTest{
 				boleto.append((char) c);
 			}
 			return boleto.toString().replaceAll("&nbsp;", "");
-		} catch (FileNotFoundException fileNotFoundException) {
+		} catch (IOException fileNotFoundException) {
 			throw new RuntimeException(fileNotFoundException);
-		} catch (IOException ioException) {
-			throw new RuntimeException(ioException);
 		}
 	}
 

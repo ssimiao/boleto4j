@@ -1,11 +1,9 @@
 package br.com.boleto.utils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class StellaStringUtilsTest {
 
@@ -43,8 +41,8 @@ public class StellaStringUtilsTest {
 		String value = null;
 		String substitute = "123";
 		String result = StellaStringUtils.prefixNotNullStringOrDefault(value, substitute, "123");
-		assertThat(result, notNullValue());
-		assertThat(result, is(substitute));
+		assertNotNull(result);
+		assertEquals(result, substitute);
 	}
 	
 	@Test
@@ -52,7 +50,7 @@ public class StellaStringUtilsTest {
 		String value = "abc";
 		String substitute = "123"; 
 		String result = StellaStringUtils.prefixNotNullStringOrDefault(value, substitute, "def");
-		assertThat(result, is("def"+value));
+		assertEquals(result, "def"+value);
 	}
 	
 	@Test
@@ -60,8 +58,8 @@ public class StellaStringUtilsTest {
 		String value = null;
 		String substitute = "123";
 		String result = StellaStringUtils.suffixNotNullStringOrDefault(value, substitute, "123");
-		assertThat(result, notNullValue());
-		assertThat(result, is(substitute));
+		assertNotNull(result);
+		assertEquals(result, substitute);
 	}
 	
 	@Test
@@ -69,6 +67,6 @@ public class StellaStringUtilsTest {
 		String value = "abc";
 		String substitute = "123"; 
 		String result = StellaStringUtils.suffixNotNullStringOrDefault(value, substitute, "def");
-		assertThat(result, is(value+"def"));
+		assertEquals(result, value+"def");
 	}
 }

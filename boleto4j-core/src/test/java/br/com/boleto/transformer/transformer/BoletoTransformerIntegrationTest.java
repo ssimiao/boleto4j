@@ -1,26 +1,20 @@
 package br.com.boleto.transformer.transformer;
 
+import br.com.boleto.*;
+import br.com.boleto.bancos.BancoDoBrasil;
+import br.com.boleto.transformer.GeradorDeBoleto;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.pdfbox.pdmodel.PDDocument;
+import org.pdfbox.util.PDFTextStripper;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
-import br.com.boleto.transformer.GeradorDeBoleto;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.pdfbox.pdmodel.PDDocument;
-import org.pdfbox.util.PDFTextStripper;
-
-import br.com.boleto.Banco;
-import br.com.boleto.Beneficiario;
-import br.com.boleto.Boleto;
-import br.com.boleto.Datas;
-import br.com.boleto.Endereco;
-import br.com.boleto.Pagador;
-import br.com.boleto.bancos.BancoDoBrasil;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Teste de INTEGRACAO apesar de estar no de unidade FIXME
@@ -30,7 +24,7 @@ public class BoletoTransformerIntegrationTest{
 
     private Boleto boleto;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 
 		Locale.setDefault(new Locale("pt", "br"));
@@ -105,7 +99,7 @@ public class BoletoTransformerIntegrationTest{
         assertNotNull(geradorDeBoleto.geraPNG());
     }
 
-	@After
+	@AfterEach
 	public void apagaArquivosGerados() {
 		final File pngFile = new File("arquivo.png");
 		final File pdfFile = new File("arquivo.pdf");
