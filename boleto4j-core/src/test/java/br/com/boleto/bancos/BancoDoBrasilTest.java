@@ -4,8 +4,6 @@ import br.com.boleto.Beneficiario;
 import br.com.boleto.Boleto;
 import br.com.boleto.Datas;
 import br.com.boleto.Pagador;
-import br.com.boleto.bancos.BancoDoBrasil;
-import br.com.boleto.bancos.GeradorDeLinhaDigitavel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
